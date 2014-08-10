@@ -7,11 +7,17 @@
   position: absolute;
 }
 
+.mapFocus {
+  position:absolute;
+  z-index:2;
+}
+
 .stations svg {
   width: 60px;
   height: 20px;
   padding-right: 100px;
   font: 10px sans-serif;
+  z-index:0;
 }
 
 .stations circle {

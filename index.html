@@ -11,6 +11,13 @@
   <body>
     <div id="map"></div>
     <script type="text/javascript">
+    
+    d3.selection.prototype.moveToFront = function() {
+      return this.each(function(){
+        this.parentNode.appendChild(this);
+      });
+    };
+
     var format = d3.time.format("%Y-%m-%d %H:%M:%S %Z")
 "2014-08-08 08:17:32 +0200"
 
@@ -54,6 +61,7 @@
 
     // SCATTERPLOT ELEMENTS
     var margin = {top: 20, right: 20, bottom: 30, left: 40},
+        padding = 10,
         width = 900 - margin.left - margin.right,
         height = 300 - margin.top - margin.bottom;
 
@@ -89,6 +97,10 @@
       .append("g")
         .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
 
+    // Elements of the map focus group
+    var mapFocus;
+    var projection;
+
     // Load the station data. When the data comes back, create an overlay.
     d3.json("Inbound/Location_20140808_inicio_0817.txt", function(data) {
       mData = data;
@@ -102,10 +114,9 @@
         // Draw each marker as a separate SVG element.
         // We could use a single SVG, but what size would it have?
         overlay.draw = function() {
-          var projection = this.getProjection(),
-              padding = 10;
+          projection = this.getProjection();
 
-          var marker = layer.selectAll("svg")
+          var marker = layer.selectAll(".marker")
               .data(d3.entries(data))
               .each(transform) // update existing markers
             .enter().append("svg:svg")
@@ -146,8 +157,25 @@
               +"<br>Longitude: " + d.value['lon']
               +"<br>Speed: " + d.value['speed']
               +"<br>Time: " + d.value['time'].substring(11,19);
-          }
+          }        
         };
+
+        mapFocus = layer.append('svg')
+            .attr({
+              'class':'mapFocus',
+            })
+            .append('g')
+              .attr('class','mapFocus-g')
+              .style('display','none');
+        
+        mapFocus.append('circle')
+            .attr({
+              'id':'mapFocusCircle',
+              'r':7,
+              'class':'circle focusCircle',
+              'cx':9,
+              'cy':9,
+            });
       };
 
       // Bind our overlay to the map…
@@ -214,14 +242,22 @@
           .attr('r', 7)
           .attr('class', 'circle focusCircle');
 
+
       var bisectDate = d3.bisector(xValue).left; 
 
       svg.append('rect')
           .attr('class', 'overlay')
           .attr('width', width)
           .attr('height', height)
-          .on('mouseover', function() { focus.style('display', null); })
-          .on('mouseout', function() { focus.style('display', 'none'); })
+          .on('mouseover', function() { 
+            focus.style('display', null);
+            d3.select('.mapFocus-g').style('display', null); 
+            d3.select('.mapFocus').moveToFront();
+          })
+          .on('mouseout', function() { 
+            focus.style('display', 'none');
+            d3.select('.mapFocus-g').style('display', 'none');  
+          })
           .on('mousemove', function() { 
               var mouse = d3.mouse(this);
               var mouseDate = xScale.invert(mouse[0]);
@@ -244,6 +280,13 @@
               focus.select('#focusLineY')
                   .attr('x1', 0).attr('y1', y)
                   .attr('x2', width).attr('y2', y);
+          
+              // Change the location of the map focus
+              gmapLL = new google.maps.LatLng(d['lat'],d['lon']);
+              proj = projection.fromLatLngToDivPixel(gmapLL);
+              d3.select('.mapFocus')
+                  .style("left", (proj.x - padding) + "px")
+                  .style("top", (proj.y - padding) + "px");
           });
 
     });
