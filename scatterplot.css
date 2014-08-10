@@ -8,3 +8,21 @@
 .dot {
   stroke: #000;
 }
+
+/* gps line */
+.line {
+  fill: none;
+  stroke: steelblue;
+  stroke-width: 2px;
+}
+
+/* crosshair tooltip element */
+.focusLine {
+    fill: none;
+    stroke: steelblue;
+    stroke-width: 0.5px;
+}
+
+.focusCircle {
+    fill: red;
+}
