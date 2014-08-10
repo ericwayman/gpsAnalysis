@@ -1,0 +1,5 @@
+TODO:
+
+- Activate tooltip and focus position on the map based on the focus for the scatterplot.
+- Enable zooming functionality on the scatterplot.
+- Add a button to hide/show gps and network data.
