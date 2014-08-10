@@ -1,0 +1,856 @@
+[{
+   "time": "2014-08-08 06:47:34 +0200",
+   "AppVersion": "1.1",
+   "Plug": 0,
+   "Communication": 1,
+   "Lat": 41.3589159,
+   "BatteryStatus": 3,
+   "Lon": 2.1083634,
+   "BatteryLevel": 97
+},{
+   "time": "2014-08-08 06:48:04 +0200",
+   "AppVersion": "1.1",
+   "Plug": 0,
+   "Communication": 1,
+   "Lat": 41.3589159,
+   "BatteryStatus": 3,
+   "Lon": 2.1083634,
+   "BatteryLevel": 97
+},{
+   "time": "2014-08-08 06:48:36 +0200",
+   "AppVersion": "1.1",
+   "Plug": 0,
+   "Communication": 1,
+   "Lat": 41.3590493,
+   "BatteryStatus": 3,
+   "Lon": 2.1120517,
+   "BatteryLevel": 97
+},{
+   "time": "2014-08-08 06:49:28 +0200",
+   "AppVersion": "1.1",
+   "Plug": 0,
+   "Communication": 1,
+   "Lat": 41.3591828,
+   "BatteryStatus": 3,
+   "Lon": 2.1157402,
+   "BatteryLevel": 96
+},{
+   "time": "2014-08-08 06:50:05 +0200",
+   "AppVersion": "1.1",
+   "Plug": 0,
+   "Communication": 1,
+   "Lat": 41.3591828,
+   "BatteryStatus": 3,
+   "Lon": 2.1157402,
+   "BatteryLevel": 96
+},{
+   "time": "2014-08-08 06:50:35 +0200",
+   "AppVersion": "1.1",
+   "Plug": 0,
+   "Communication": 1,
+   "Lat": 41.3591828,
+   "BatteryStatus": 3,
+   "Lon": 2.1157402,
+   "BatteryLevel": 96
+},{
+   "time": "2014-08-08 06:51:10 +0200",
+   "AppVersion": "1.1",
+   "Plug": 0,
+   "Communication": 1,
+   "Lat": 41.3591828,
+   "BatteryStatus": 3,
+   "Lon": 2.1157402,
+   "BatteryLevel": 96
+},{
+   "time": "2014-08-08 06:51:51 +0200",
+   "AppVersion": "1.1",
+   "Plug": 0,
+   "Communication": 1,
+   "Lat": 41.3675943,
+   "BatteryStatus": 3,
+   "Lon": 2.1115032,
+   "BatteryLevel": 96
+},{
+   "time": "2014-08-08 06:52:25 +0200",
+   "AppVersion": "1.1",
+   "Plug": 0,
+   "Communication": 1,
+   "Lat": 41.3675943,
+   "BatteryStatus": 3,
+   "Lon": 2.1115032,
+   "BatteryLevel": 96
+},{
+   "time": "2014-08-08 06:52:55 +0200",
+   "AppVersion": "1.1",
+   "Plug": 0,
+   "Communication": 1,
+   "Lat": 41.3675943,
+   "BatteryStatus": 3,
+   "Lon": 2.1115032,
+   "BatteryLevel": 96
+},{
+   "time": "2014-08-08 06:53:33 +0200",
+   "AppVersion": "1.1",
+   "Plug": 0,
+   "Communication": 1,
+   "Lat": 41.3807664,
+   "BatteryStatus": 3,
+   "Lon": 2.1413154,
+   "BatteryLevel": 96
+},{
+   "time": "2014-08-08 06:54:16 +0200",
+   "AppVersion": "1.1",
+   "Plug": 0,
+   "Communication": 1,
+   "Lat": 41.3840594,
+   "BatteryStatus": 3,
+   "Lon": 2.1487684,
+   "BatteryLevel": 96
+},{
+   "time": "2014-08-08 06:54:54 +0200",
+   "AppVersion": "1.1",
+   "Plug": 0,
+   "Communication": 1,
+   "Lat": 41.3675943,
+   "BatteryStatus": 3,
+   "Lon": 2.1115032,
+   "BatteryLevel": 96
+},{
+   "time": "2014-08-08 06:55:44 +0200",
+   "AppVersion": "1.1",
+   "Plug": 0,
+   "Communication": 1,
+   "Lat": 41.3675943,
+   "BatteryStatus": 3,
+   "Lon": 2.1115032,
+   "BatteryLevel": 96
+},{
+   "time": "2014-08-08 06:56:30 +0200",
+   "AppVersion": "1.1",
+   "Plug": 0,
+   "Communication": 1,
+   "Lat": 41.3675943,
+   "BatteryStatus": 3,
+   "Lon": 2.1115032,
+   "BatteryLevel": 96
+},{
+   "time": "2014-08-08 06:57:14 +0200",
+   "AppVersion": "1.1",
+   "Plug": 0,
+   "Communication": 1,
+   "Lat": 41.4053829,
+   "BatteryStatus": 3,
+   "Lon": 2.1770071,
+   "BatteryLevel": 95
+},{
+   "time": "2014-08-08 06:57:44 +0200",
+   "AppVersion": "1.1",
+   "Plug": 0,
+   "Communication": 1,
+   "Lat": 41.3959357,
+   "BatteryStatus": 3,
+   "Lon": 2.1606311,
+   "BatteryLevel": 95
+},{
+   "time": "2014-08-08 06:58:14 +0200",
+   "AppVersion": "1.1",
+   "Plug": 0,
+   "Communication": 1,
+   "Lat": 41.4242772,
+   "BatteryStatus": 3,
+   "Lon": 2.2097591,
+   "BatteryLevel": 95
+},{
+   "time": "2014-08-08 06:58:44 +0200",
+   "AppVersion": "1.1",
+   "Plug": 0,
+   "Communication": 1,
+   "Lat": 41.4246243,
+   "BatteryStatus": 3,
+   "Lon": 2.2063932,
+   "BatteryLevel": 95
+},{
+   "time": "2014-08-08 06:59:14 +0200",
+   "AppVersion": "1.1",
+   "Plug": 0,
+   "Communication": 1,
+   "Lat": 41.4066902,
+   "BatteryStatus": 3,
+   "Lon": 2.1883768,
+   "BatteryLevel": 95
+},{
+   "time": "2014-08-08 06:59:44 +0200",
+   "AppVersion": "1.1",
+   "Plug": 0,
+   "Communication": 1,
+   "Lat": 41.4066885,
+   "BatteryStatus": 3,
+   "Lon": 2.1883759,
+   "BatteryLevel": 95
+},{
+   "time": "2014-08-08 07:00:14 +0200",
+   "AppVersion": "1.1",
+   "Plug": 0,
+   "Communication": 1,
+   "Lat": 41.4066885,
+   "BatteryStatus": 3,
+   "Lon": 2.1883755,
+   "BatteryLevel": 95
+},{
+   "time": "2014-08-08 07:00:46 +0200",
+   "AppVersion": "1.1",
+   "Plug": 0,
+   "Communication": 1,
+   "Lat": 41.4066885,
+   "BatteryStatus": 3,
+   "Lon": 2.1883755,
+   "BatteryLevel": 95
+},{
+   "time": "2014-08-08 07:02:11 +0200",
+   "AppVersion": "1.1",
+   "Plug": 0,
+   "Communication": 1,
+   "Lat": 41.42575226,
+   "BatteryStatus": 3,
+   "Lon": 2.1954876,
+   "BatteryLevel": 95
+},{
+   "time": "2014-08-08 07:03:36 +0200",
+   "AppVersion": "1.1",
+   "Plug": 0,
+   "Communication": 1,
+   "Lat": 41.4249713,
+   "BatteryStatus": 3,
+   "Lon": 2.2030274,
+   "BatteryLevel": 95
+},{
+   "time": "2014-08-08 07:06:06 +0200",
+   "AppVersion": "1.1",
+   "Plug": 0,
+   "Communication": 1,
+   "Lat": 41.42350077,
+   "BatteryStatus": 3,
+   "Lon": 2.22983961,
+   "BatteryLevel": 95
+},{
+   "time": "2014-08-08 07:08:11 +0200",
+   "AppVersion": "1.1",
+   "Plug": 0,
+   "Communication": 1,
+   "Lat": 41.42992033,
+   "BatteryStatus": 3,
+   "Lon": 2.23514775,
+   "BatteryLevel": 95
+},{
+   "time": "2014-08-08 07:09:46 +0200",
+   "AppVersion": "1.1",
+   "Plug": 0,
+   "Communication": 1,
+   "Lat": 41.44502197,
+   "BatteryStatus": 3,
+   "Lon": 2.24827747,
+   "BatteryLevel": 95
+},{
+   "time": "2014-08-08 07:10:53 +0200",
+   "AppVersion": "1.1",
+   "Plug": 0,
+   "Communication": 1,
+   "Lat": 41.44539309,
+   "BatteryStatus": 3,
+   "Lon": 2.24856599,
+   "BatteryLevel": 95
+},{
+   "time": "2014-08-08 07:11:23 +0200",
+   "AppVersion": "1.1",
+   "Plug": 0,
+   "Communication": 1,
+   "Lat": 41.44790123,
+   "BatteryStatus": 3,
+   "Lon": 2.25147565,
+   "BatteryLevel": 95
+},{
+   "time": "2014-08-08 07:11:53 +0200",
+   "AppVersion": "1.1",
+   "Plug": 0,
+   "Communication": 1,
+   "Lat": 41.45403011,
+   "BatteryStatus": 3,
+   "Lon": 2.25837907,
+   "BatteryLevel": 95
+},{
+   "time": "2014-08-08 07:12:23 +0200",
+   "AppVersion": "1.1",
+   "Plug": 0,
+   "Communication": 1,
+   "Lat": 41.45926973,
+   "BatteryStatus": 3,
+   "Lon": 2.26623458,
+   "BatteryLevel": 95
+},{
+   "time": "2014-08-08 07:12:53 +0200",
+   "AppVersion": "1.1",
+   "Plug": 0,
+   "Communication": 1,
+   "Lat": 41.46223425,
+   "BatteryStatus": 3,
+   "Lon": 2.27108622,
+   "BatteryLevel": 94
+},{
+   "time": "2014-08-08 07:13:23 +0200",
+   "AppVersion": "1.1",
+   "Plug": 0,
+   "Communication": 1,
+   "Lat": 41.46247038,
+   "BatteryStatus": 3,
+   "Lon": 2.27139591,
+   "BatteryLevel": 94
+},{
+   "time": "2014-08-08 07:13:53 +0200",
+   "AppVersion": "1.1",
+   "Plug": 0,
+   "Communication": 1,
+   "Lat": 41.46335061,
+   "BatteryStatus": 3,
+   "Lon": 2.27311385,
+   "BatteryLevel": 94
+},{
+   "time": "2014-08-08 07:14:23 +0200",
+   "AppVersion": "1.1",
+   "Plug": 0,
+   "Communication": 1,
+   "Lat": 41.4640442,
+   "BatteryStatus": 3,
+   "Lon": 2.2747359,
+   "BatteryLevel": 94
+},{
+   "time": "2014-08-08 07:14:53 +0200",
+   "AppVersion": "1.1",
+   "Plug": 0,
+   "Communication": 1,
+   "Lat": 41.46866315,
+   "BatteryStatus": 3,
+   "Lon": 2.28672944,
+   "BatteryLevel": 94
+},{
+   "time": "2014-08-08 07:15:23 +0200",
+   "AppVersion": "1.1",
+   "Plug": 0,
+   "Communication": 1,
+   "Lat": 41.46886652,
+   "BatteryStatus": 3,
+   "Lon": 2.28718155,
+   "BatteryLevel": 94
+},{
+   "time": "2014-08-08 07:15:53 +0200",
+   "AppVersion": "1.1",
+   "Plug": 0,
+   "Communication": 1,
+   "Lat": 41.46904718,
+   "BatteryStatus": 3,
+   "Lon": 2.28762215,
+   "BatteryLevel": 94
+},{
+   "time": "2014-08-08 07:16:23 +0200",
+   "AppVersion": "1.1",
+   "Plug": 0,
+   "Communication": 1,
+   "Lat": 41.47092002,
+   "BatteryStatus": 3,
+   "Lon": 2.29221794,
+   "BatteryLevel": 94
+},{
+   "time": "2014-08-08 07:16:53 +0200",
+   "AppVersion": "1.1",
+   "Plug": 0,
+   "Communication": 1,
+   "Lat": 41.47377766,
+   "BatteryStatus": 3,
+   "Lon": 2.29992359,
+   "BatteryLevel": 94
+},{
+   "time": "2014-08-08 07:18:38 +0200",
+   "AppVersion": "1.1",
+   "Plug": 0,
+   "Communication": 1,
+   "Lat": 41.47694124,
+   "BatteryStatus": 3,
+   "Lon": 2.31041336,
+   "BatteryLevel": 94
+},{
+   "time": "2014-08-08 07:19:47 +0200",
+   "AppVersion": "1.1",
+   "Plug": 0,
+   "Communication": 1,
+   "Lat": 41.47876624,
+   "BatteryStatus": 3,
+   "Lon": 2.31857495,
+   "BatteryLevel": 94
+},{
+   "time": "2014-08-08 07:20:44 +0200",
+   "AppVersion": "1.1",
+   "Plug": 0,
+   "Communication": 1,
+   "Lat": 41.47884275,
+   "BatteryStatus": 3,
+   "Lon": 2.31875224,
+   "BatteryLevel": 94
+},{
+   "time": "2014-08-08 07:21:56 +0200",
+   "AppVersion": "1.1",
+   "Plug": 0,
+   "Communication": 1,
+   "Lat": 41.48192652,
+   "BatteryStatus": 3,
+   "Lon": 2.33191982,
+   "BatteryLevel": 93
+},{
+   "time": "2014-08-08 07:23:24 +0200",
+   "AppVersion": "1.1",
+   "Plug": 0,
+   "Communication": 1,
+   "Lat": 41.48734393,
+   "BatteryStatus": 3,
+   "Lon": 2.35399763,
+   "BatteryLevel": 93
+},{
+   "time": "2014-08-08 07:23:54 +0200",
+   "AppVersion": "1.1",
+   "Plug": 0,
+   "Communication": 1,
+   "Lat": 41.48744958,
+   "BatteryStatus": 3,
+   "Lon": 2.35436405,
+   "BatteryLevel": 93
+},{
+   "time": "2014-08-08 07:24:24 +0200",
+   "AppVersion": "1.1",
+   "Plug": 0,
+   "Communication": 1,
+   "Lat": 41.48744898,
+   "BatteryStatus": 3,
+   "Lon": 2.35436357,
+   "BatteryLevel": 93
+},{
+   "time": "2014-08-08 07:24:54 +0200",
+   "AppVersion": "1.1",
+   "Plug": 0,
+   "Communication": 1,
+   "Lat": 41.48751762,
+   "BatteryStatus": 3,
+   "Lon": 2.3545456,
+   "BatteryLevel": 93
+},{
+   "time": "2014-08-08 07:25:29 +0200",
+   "AppVersion": "1.1",
+   "Plug": 0,
+   "Communication": 1,
+   "Lat": 41.4889333,
+   "BatteryStatus": 3,
+   "Lon": 2.3585855,
+   "BatteryLevel": 93
+},{
+   "time": "2014-08-08 07:26:52 +0200",
+   "AppVersion": "1.1",
+   "Plug": 0,
+   "Communication": 1,
+   "Lat": 41.4946083,
+   "BatteryStatus": 3,
+   "Lon": 2.3743092,
+   "BatteryLevel": 93
+},{
+   "time": "2014-08-08 07:28:33 +0200",
+   "AppVersion": "1.1",
+   "Plug": 0,
+   "Communication": 1,
+   "Lat": 41.50065749,
+   "BatteryStatus": 3,
+   "Lon": 2.3901201,
+   "BatteryLevel": 93
+},{
+   "time": "2014-08-08 07:29:47 +0200",
+   "AppVersion": "1.1",
+   "Plug": 0,
+   "Communication": 1,
+   "Lat": 41.4745999,
+   "BatteryStatus": 3,
+   "Lon": 2.30177,
+   "BatteryLevel": 93
+},{
+   "time": "2014-08-08 07:31:00 +0200",
+   "AppVersion": "1.1",
+   "Plug": 0,
+   "Communication": 1,
+   "Lat": 41.50767411,
+   "BatteryStatus": 3,
+   "Lon": 2.40383469,
+   "BatteryLevel": 93
+},{
+   "time": "2014-08-08 07:31:36 +0200",
+   "AppVersion": "1.1",
+   "Plug": 0,
+   "Communication": 1,
+   "Lat": 41.51155681,
+   "BatteryStatus": 3,
+   "Lon": 2.41055293,
+   "BatteryLevel": 93
+},{
+   "time": "2014-08-08 07:32:06 +0200",
+   "AppVersion": "1.1",
+   "Plug": 0,
+   "Communication": 1,
+   "Lat": 41.51664529,
+   "BatteryStatus": 3,
+   "Lon": 2.41798376,
+   "BatteryLevel": 93
+},{
+   "time": "2014-08-08 07:32:36 +0200",
+   "AppVersion": "1.1",
+   "Plug": 0,
+   "Communication": 1,
+   "Lat": 41.5190957,
+   "BatteryStatus": 3,
+   "Lon": 2.422643,
+   "BatteryLevel": 93
+},{
+   "time": "2014-08-08 07:34:08 +0200",
+   "AppVersion": "1.1",
+   "Plug": 0,
+   "Communication": 1,
+   "Lat": 41.53142048,
+   "BatteryStatus": 3,
+   "Lon": 2.44321735,
+   "BatteryLevel": 92
+},{
+   "time": "2014-08-08 07:35:38 +0200",
+   "AppVersion": "1.1",
+   "Plug": 0,
+   "Communication": 1,
+   "Lat": 41.53329577,
+   "BatteryStatus": 3,
+   "Lon": 2.44569681,
+   "BatteryLevel": 92
+},{
+   "time": "2014-08-08 07:36:56 +0200",
+   "AppVersion": "1.1",
+   "Plug": 0,
+   "Communication": 1,
+   "Lat": 41.54337743,
+   "BatteryStatus": 3,
+   "Lon": 2.4624973,
+   "BatteryLevel": 92
+},{
+   "time": "2014-08-08 07:38:11 +0200",
+   "AppVersion": "1.1",
+   "Plug": 0,
+   "Communication": 1,
+   "Lat": 41.5397518,
+   "BatteryStatus": 3,
+   "Lon": 2.4545685,
+   "BatteryLevel": 92
+},{
+   "time": "2014-08-08 07:40:03 +0200",
+   "AppVersion": "1.1",
+   "Plug": 0,
+   "Communication": 1,
+   "Lat": 41.55694946,
+   "BatteryStatus": 3,
+   "Lon": 2.50122848,
+   "BatteryLevel": 92
+},{
+   "time": "2014-08-08 07:41:24 +0200",
+   "AppVersion": "1.1",
+   "Plug": 0,
+   "Communication": 1,
+   "Lat": 41.5213259,
+   "BatteryStatus": 3,
+   "Lon": 2.4202167,
+   "BatteryLevel": 92
+},{
+   "time": "2014-08-08 07:43:03 +0200",
+   "AppVersion": "1.1",
+   "Plug": 0,
+   "Communication": 1,
+   "Lat": 41.5681759,
+   "BatteryStatus": 3,
+   "Lon": 2.52516757,
+   "BatteryLevel": 92
+},{
+   "time": "2014-08-08 07:44:55 +0200",
+   "AppVersion": "1.1",
+   "Plug": 0,
+   "Communication": 1,
+   "Lat": 41.57233037,
+   "BatteryStatus": 3,
+   "Lon": 2.53640008,
+   "BatteryLevel": 91
+},{
+   "time": "2014-08-08 07:45:28 +0200",
+   "AppVersion": "1.1",
+   "Plug": 0,
+   "Communication": 1,
+   "Lat": 41.57410448,
+   "BatteryStatus": 3,
+   "Lon": 2.54100029,
+   "BatteryLevel": 91
+},{
+   "time": "2014-08-08 07:45:58 +0200",
+   "AppVersion": "1.1",
+   "Plug": 0,
+   "Communication": 1,
+   "Lat": 41.57512749,
+   "BatteryStatus": 3,
+   "Lon": 2.54367015,
+   "BatteryLevel": 91
+},{
+   "time": "2014-08-08 07:46:28 +0200",
+   "AppVersion": "1.1",
+   "Plug": 0,
+   "Communication": 1,
+   "Lat": 41.57601457,
+   "BatteryStatus": 3,
+   "Lon": 2.54613116,
+   "BatteryLevel": 91
+},{
+   "time": "2014-08-08 07:46:58 +0200",
+   "AppVersion": "1.1",
+   "Plug": 0,
+   "Communication": 1,
+   "Lat": 41.57713649,
+   "BatteryStatus": 3,
+   "Lon": 2.54877337,
+   "BatteryLevel": 91
+},{
+   "time": "2014-08-08 07:47:56 +0200",
+   "AppVersion": "1.1",
+   "Plug": 0,
+   "Communication": 1,
+   "Lat": 41.57739825,
+   "BatteryStatus": 3,
+   "Lon": 2.54933638,
+   "BatteryLevel": 91
+},{
+   "time": "2014-08-08 07:49:23 +0200",
+   "AppVersion": "1.1",
+   "Plug": 0,
+   "Communication": 1,
+   "Lat": 41.578855,
+   "BatteryStatus": 3,
+   "Lon": 2.5522201,
+   "BatteryLevel": 91
+},{
+   "time": "2014-08-08 07:49:53 +0200",
+   "AppVersion": "1.1",
+   "Plug": 0,
+   "Communication": 1,
+   "Lat": 41.58173425,
+   "BatteryStatus": 3,
+   "Lon": 2.56634695,
+   "BatteryLevel": 91
+},{
+   "time": "2014-08-08 07:50:23 +0200",
+   "AppVersion": "1.1",
+   "Plug": 0,
+   "Communication": 1,
+   "Lat": 41.58440729,
+   "BatteryStatus": 3,
+   "Lon": 2.57376828,
+   "BatteryLevel": 91
+},{
+   "time": "2014-08-08 07:50:53 +0200",
+   "AppVersion": "1.1",
+   "Plug": 0,
+   "Communication": 1,
+   "Lat": 41.58590244,
+   "BatteryStatus": 3,
+   "Lon": 2.57931835,
+   "BatteryLevel": 91
+},{
+   "time": "2014-08-08 07:51:23 +0200",
+   "AppVersion": "1.1",
+   "Plug": 0,
+   "Communication": 1,
+   "Lat": 41.58623423,
+   "BatteryStatus": 3,
+   "Lon": 2.58040189,
+   "BatteryLevel": 91
+},{
+   "time": "2014-08-08 07:51:53 +0200",
+   "AppVersion": "1.1",
+   "Plug": 0,
+   "Communication": 1,
+   "Lat": 41.58623505,
+   "BatteryStatus": 3,
+   "Lon": 2.58040057,
+   "BatteryLevel": 91
+},{
+   "time": "2014-08-08 07:52:23 +0200",
+   "AppVersion": "1.1",
+   "Plug": 0,
+   "Communication": 1,
+   "Lat": 41.58661003,
+   "BatteryStatus": 3,
+   "Lon": 2.58149571,
+   "BatteryLevel": 91
+},{
+   "time": "2014-08-08 07:53:31 +0200",
+   "AppVersion": "1.1",
+   "Plug": 0,
+   "Communication": 1,
+   "Lat": 41.59173701,
+   "BatteryStatus": 3,
+   "Lon": 2.59691012,
+   "BatteryLevel": 90
+},{
+   "time": "2014-08-08 07:54:04 +0200",
+   "AppVersion": "1.1",
+   "Plug": 0,
+   "Communication": 1,
+   "Lat": 41.5946891,
+   "BatteryStatus": 3,
+   "Lon": 2.60574045,
+   "BatteryLevel": 90
+},{
+   "time": "2014-08-08 07:54:34 +0200",
+   "AppVersion": "1.1",
+   "Plug": 0,
+   "Communication": 1,
+   "Lat": 41.59665958,
+   "BatteryStatus": 3,
+   "Lon": 2.6116631,
+   "BatteryLevel": 90
+},{
+   "time": "2014-08-08 07:55:48 +0200",
+   "AppVersion": "1.1",
+   "Plug": 0,
+   "Communication": 1,
+   "Lat": 41.60018382,
+   "BatteryStatus": 3,
+   "Lon": 2.62174016,
+   "BatteryLevel": 90
+},{
+   "time": "2014-08-08 07:57:05 +0200",
+   "AppVersion": "1.1",
+   "Plug": 0,
+   "Communication": 1,
+   "Lat": 41.60137972,
+   "BatteryStatus": 3,
+   "Lon": 2.62383068,
+   "BatteryLevel": 90
+},{
+   "time": "2014-08-08 07:58:47 +0200",
+   "AppVersion": "1.1",
+   "Plug": 0,
+   "Communication": 1,
+   "Lat": 41.60138051,
+   "BatteryStatus": 3,
+   "Lon": 2.62382789,
+   "BatteryLevel": 90
+},{
+   "time": "2014-08-08 08:00:36 +0200",
+   "AppVersion": "1.1",
+   "Plug": 0,
+   "Communication": 1,
+   "Lat": 41.6013362,
+   "BatteryStatus": 3,
+   "Lon": 2.62382029,
+   "BatteryLevel": 89
+},{
+   "time": "2014-08-08 08:01:06 +0200",
+   "AppVersion": "1.1",
+   "Plug": 0,
+   "Communication": 1,
+   "Lat": 41.60178005,
+   "BatteryStatus": 3,
+   "Lon": 2.62507585,
+   "BatteryLevel": 89
+},{
+   "time": "2014-08-08 08:01:36 +0200",
+   "AppVersion": "1.1",
+   "Plug": 0,
+   "Communication": 1,
+   "Lat": 41.6017297,
+   "BatteryStatus": 3,
+   "Lon": 2.6246792,
+   "BatteryLevel": 89
+},{
+   "time": "2014-08-08 08:02:06 +0200",
+   "AppVersion": "1.1",
+   "Plug": 0,
+   "Communication": 1,
+   "Lat": 41.60361068,
+   "BatteryStatus": 3,
+   "Lon": 2.62996834,
+   "BatteryLevel": 89
+},{
+   "time": "2014-08-08 08:02:36 +0200",
+   "AppVersion": "1.1",
+   "Plug": 0,
+   "Communication": 1,
+   "Lat": 41.60429197,
+   "BatteryStatus": 3,
+   "Lon": 2.63262447,
+   "BatteryLevel": 89
+},{
+   "time": "2014-08-08 08:03:06 +0200",
+   "AppVersion": "1.1",
+   "Plug": 0,
+   "Communication": 1,
+   "Lat": 41.6042662,
+   "BatteryStatus": 3,
+   "Lon": 2.6331378,
+   "BatteryLevel": 89
+},{
+   "time": "2014-08-08 08:03:36 +0200",
+   "AppVersion": "1.1",
+   "Plug": 0,
+   "Communication": 0,
+   "Lat": 41.6042662,
+   "BatteryStatus": 3,
+   "Lon": 2.6331378,
+   "BatteryLevel": 89
+},{
+   "time": "2014-08-08 08:04:06 +0200",
+   "AppVersion": "1.1",
+   "Plug": 0,
+   "Communication": 1,
+   "Lat": 41.61002003,
+   "BatteryStatus": 3,
+   "Lon": 2.64999057,
+   "BatteryLevel": 88
+},{
+   "time": "2014-08-08 08:04:38 +0200",
+   "AppVersion": "1.1",
+   "Plug": 0,
+   "Communication": 1,
+   "Lat": 41.61166814,
+   "BatteryStatus": 3,
+   "Lon": 2.65643093,
+   "BatteryLevel": 88
+},{
+   "time": "2014-08-08 08:05:08 +0200",
+   "AppVersion": "1.1",
+   "Plug": 0,
+   "Communication": 1,
+   "Lat": 41.61291674,
+   "BatteryStatus": 3,
+   "Lon": 2.66088676,
+   "BatteryLevel": 88
+},{
+   "time": "2014-08-08 08:05:38 +0200",
+   "AppVersion": "1.1",
+   "Plug": 0,
+   "Communication": 1,
+   "Lat": 41.61388228,
+   "BatteryStatus": 3,
+   "Lon": 2.66366353,
+   "BatteryLevel": 88
+},{
+   "time": "2014-08-08 08:06:08 +0200",
+   "AppVersion": "1.1",
+   "Plug": 0,
+   "Communication": 1,
+   "Lat": 41.61463776,
+   "BatteryStatus": 3,
+   "Lon": 2.66612284,
+   "BatteryLevel": 88
+}]

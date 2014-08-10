@@ -1,0 +1,28 @@
+#map {
+  width: 900px;
+  height: 300px;
+}
+
+.stations, .stations svg {
+  position: absolute;
+}
+
+.stations svg {
+  width: 60px;
+  height: 20px;
+  padding-right: 100px;
+  font: 10px sans-serif;
+}
+
+.stations circle {
+  stroke: black;
+  stroke-width: 1.5px;
+}
+
+.tooltip {
+  background-color: white;
+  padding:10px;
+  border-radius: 5px;
+  border-color: black;
+  border-style: solid;
+}

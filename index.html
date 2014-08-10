@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta name="viewport" content="initial-scale=1.0, user-scalable=no"/>
+    <script type="text/javascript" src="http://maps.google.com/maps/api/js?sensor=true"></script>
+    <script type="text/javascript" src="http://d3js.org/d3.v3.min.js"></script>
+    <script type="text/javascript" src="moment.js"></script>
+    <link rel="stylesheet" type="text/css" href="map.css">
+    <link rel="stylesheet" type="text/css" href="scatterplot.css">
+  </head>
+  <body>
+    <div id="map"></div>
+    <script type="text/javascript">
+    var format = d3.time.format("%Y-%m-%d %H:%M:%S %Z")
+"2014-08-08 08:17:32 +0200"
+
+    function color_fill(d){
+      if (d.value['sensor'] == 'network'){
+        return "blue";
+      } else if (d.value['sensor'] == 'network') {
+        return "green";
+      } else {
+        return "red";
+      }
+    }
+
+    function color_fill2(d){
+      if (d['sensor'] == 'network'){
+        return "blue";
+      } else if (d['sensor'] == 'network') {
+        return "green";
+      } else {
+        return "red";
+      }
+    }
+
+    var mData;
+    // Create the Google Map…
+    var map = new google.maps.Map(d3.select("#map").node(), {
+      zoom: 10,
+      center: new google.maps.LatLng(41.49, 2.35),
+      mapTypeId: google.maps.MapTypeId.TERRAIN
+    });
+
+    // TOOLTIP DIV
+    var tooltip = d3.select("body")
+      .append("div")
+      .attr("class","tooltip")
+      .style("position", "absolute")
+      .style("z-index", "10")
+      .style("visibility", "hidden");
+
+    // SCATTERPLOT ELEMENTS
+    var margin = {top: 20, right: 20, bottom: 30, left: 40},
+        width = 900 - margin.left - margin.right,
+        height = 400 - margin.top - margin.bottom;
+
+    /* 
+     * value accessor - returns the value to encode for a given data object.
+     * scale - maps value to a visual display encoding, such as a pixel position.
+     * map function - maps from data value to display value
+     * axis - sets up axis
+     */ 
+
+    // setup x 
+    var xValue = function(d) {return format.parse(d['time']);}, // data -> value
+        xScale = d3.time.scale().range([0, width]), // value -> display
+        xMap = function(d) { return xScale(xValue(d));}, // data -> display
+        xAxis = d3.svg.axis().scale(xScale).orient("bottom");
+
+    // setup y
+    var yValue = function(d) { return d['speed'];}, // data -> value
+        yScale = d3.scale.linear().range([height, 0]), // value -> display
+        yMap = function(d) { return yScale(yValue(d));}, // data -> display
+        yAxis = d3.svg.axis().scale(yScale).orient("left");
+
+    // add the graph canvas to the body of the webpage
+    var svg = d3.select("body").append("svg")
+        .attr("width", width + margin.left + margin.right)
+        .attr("height", height + margin.top + margin.bottom)
+      .append("g")
+        .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
+
+    // Load the station data. When the data comes back, create an overlay.
+    d3.json("Inbound/Location_20140808_inicio_0817.txt", function(data) {
+      mData = data;
+      var overlay = new google.maps.OverlayView();
+
+      // Add the container when the overlay is added to the map.
+      overlay.onAdd = function() {
+        var layer = d3.select(this.getPanes().floatPane).append("div")
+            .attr("class", "stations");
+
+        // Draw each marker as a separate SVG element.
+        // We could use a single SVG, but what size would it have?
+        overlay.draw = function() {
+          var projection = this.getProjection(),
+              padding = 10;
+
+          var marker = layer.selectAll("svg")
+              .data(d3.entries(data))
+              .each(transform) // update existing markers
+            .enter().append("svg:svg")
+              .each(transform)
+              .attr("class", "marker")
+              .style({
+                "fill": color_fill,
+                "pointer-events":"none"
+              });
+
+          // Add a circle.
+          marker.append("svg:circle")
+              .attr("r", 4.5)
+              .attr("cx", padding)
+              .attr("cy", padding)
+              .style({
+                "pointer-events":"auto",
+                "cursor":"pointer",
+              })
+              .on("mouseover", function(){return tooltip.style("visibility", "visible");})
+              .on("mousemove", function(d){
+                tooltip.html(generate_tooltip(d));
+                return tooltip.style("top", (event.pageY-10)+"px").style("left",(event.pageX+10)+"px");
+              })
+              .on("mouseout", function(){return tooltip.style("visibility", "hidden");});;
+
+          function transform(d) {
+            d = new google.maps.LatLng(d.value['lat'], d.value['lon']);
+            d = projection.fromLatLngToDivPixel(d);
+            return d3.select(this)
+                .style("left", (d.x - padding) + "px")
+                .style("top", (d.y - padding) + "px");
+          }
+
+          function generate_tooltip(d){
+            console.log(d)
+            return "Sensor: " + d.value['sensor']
+              + "<br>Latitude: " + d.value['lat']
+              +"<br>Longitude: " + d.value['lon']
+              +"<br>Speed: " + d.value['speed']
+              +"<br>Time: " + d.value['time'].substring(11,19);
+          }
+        };
+      };
+
+      // Bind our overlay to the map…
+      overlay.setMap(map);
+
+      // Scatterplot drawing (speed timeseries)
+
+      // don't want dots overlapping axis, so add in buffer to data domain
+      xScale.domain(d3.extent(data,xValue));
+      yScale.domain(d3.extent(data,yValue));
+
+      // x-axis
+      svg.append("g")
+          .attr("class", "x axis")
+          .attr("transform", "translate(0," + height + ")")
+          .call(xAxis)
+        .append("text")
+          .attr("class", "label")
+          .attr("x", width)
+          .attr("y", -6)
+          .style("text-anchor", "end")
+          .text("Time");
+
+      // y-axis
+      svg.append("g")
+          .attr("class", "y axis")
+          .call(yAxis)
+        .append("text")
+          .attr("class", "label")
+          .attr("transform", "rotate(-90)")
+          .attr("y", 6)
+          .attr("dy", ".71em")
+          .style("text-anchor", "end")
+          .text("Speed");
+
+      // draw dots
+      svg.selectAll(".dot")
+          .data(data)
+        .enter().append("circle")
+          .attr("class", "dot")
+          .attr("r", 3.5)
+          .attr("cx", xMap)
+          .attr("cy", yMap)
+          .style("fill", color_fill2) 
+          // .on("mouseover", function(d) {
+          //     tooltip.transition()
+          //          .duration(200)
+          //          .style("opacity", .9);
+          //     tooltip.html(d["Cereal Name"] + "<br/> (" + xValue(d) 
+          //     + ", " + yValue(d) + ")")
+          //          .style("left", (d3.event.pageX + 5) + "px")
+          //          .style("top", (d3.event.pageY - 28) + "px");
+          // })
+          // .on("mouseout", function(d) {
+          //     tooltip.transition()
+          //          .duration(500)
+          //          .style("opacity", 0);
+          // });
+
+    });
+    </script>
+  </body>
+</html>
