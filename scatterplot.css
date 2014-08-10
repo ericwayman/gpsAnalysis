@@ -24,5 +24,13 @@
 }
 
 .focusCircle {
-    fill: red;
+    fill: lightgreen;
+    stroke: black;
+    stroke-width:2px;
+}
+
+.overlay {
+    fill: none;
+    stroke: none;
+    pointer-events: all;
 }

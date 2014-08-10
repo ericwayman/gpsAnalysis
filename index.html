@@ -141,7 +141,6 @@
           }
 
           function generate_tooltip(d){
-            console.log(d)
             return "Sensor: " + d.value['sensor']
               + "<br>Latitude: " + d.value['lat']
               +"<br>Longitude: " + d.value['lon']
@@ -191,14 +190,61 @@
         .attr('d', line);
 
       // draw dots
-      svg.selectAll(".dot")
+      svg.append('g').attr("class","g-circles").selectAll(".dot")
           .data(data)
         .enter().append("circle")
           .attr("class", "dot")
           .attr("r", 3.5)
           .attr("cx", xMap)
           .attr("cy", yMap)
-          .style("fill", color_fill2) 
+          .style("fill", color_fill2)
+
+      // Adding the focus tracking
+      // focus tracking
+      var focus = svg.append('g').style('display', 'none');
+          
+      focus.append('line')
+          .attr('id', 'focusLineX')
+          .attr('class', 'focusLine');
+      focus.append('line')
+          .attr('id', 'focusLineY')
+          .attr('class', 'focusLine');
+      focus.append('circle')
+          .attr('id', 'focusCircle')
+          .attr('r', 7)
+          .attr('class', 'circle focusCircle');
+
+      var bisectDate = d3.bisector(xValue).left; 
+
+      svg.append('rect')
+          .attr('class', 'overlay')
+          .attr('width', width)
+          .attr('height', height)
+          .on('mouseover', function() { focus.style('display', null); })
+          .on('mouseout', function() { focus.style('display', 'none'); })
+          .on('mousemove', function() { 
+              var mouse = d3.mouse(this);
+              var mouseDate = xScale.invert(mouse[0]);
+              var i = bisectDate(data, mouseDate); // returns the index to the current data item
+
+              var d0 = data[i - 1]
+              var d1 = data[i];
+              // work out which date value is closest to the mouse
+              var d = mouseDate - d0['time'] > d1['time'] - mouseDate ? d1 : d0;
+
+              var x = xScale(xValue(d));
+              var y = yScale(yValue(d));
+
+              focus.select('#focusCircle')
+                  .attr('cx', x)
+                  .attr('cy', y);
+              focus.select('#focusLineX')
+                  .attr('x1', x).attr('y1', 0)
+                  .attr('x2', x).attr('y2', height);
+              focus.select('#focusLineY')
+                  .attr('x1', 0).attr('y1', y)
+                  .attr('x2', width).attr('y2', y);
+          });
 
     });
     </script>
