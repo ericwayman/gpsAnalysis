@@ -59,6 +59,13 @@ var gps_speed_timeseries_svg = d3.select("body").append("svg")
     .style('cursor','pointer')
   .append("g")
     .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
+gps_speed_timeseries_svg.append("clipPath")
+  .attr("id","clip-gps")
+  .append('rect')
+    .attr({
+      'width':width,
+      'height':height+margin.bottom,
+    })
 
 // add the network/wifi measurements
 var network_speed_timeseries_svg = d3.select("body").append("svg")
@@ -67,6 +74,13 @@ var network_speed_timeseries_svg = d3.select("body").append("svg")
     .style('cursor','pointer')
   .append("g")
     .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
+network_speed_timeseries_svg.append("clipPath")
+  .attr("id","clip-network")
+  .append('rect')
+    .attr({
+      'width':width,
+      'height':smallHeight+margin.bottom,
+    })
 
 // add the acc sensor timeseries graph canvas to the body
 var acc_timeseries_svg = d3.select("body").append("svg")
@@ -74,7 +88,13 @@ var acc_timeseries_svg = d3.select("body").append("svg")
     .attr("height", height + margin.top + margin.bottom)
   .append("g")
     .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
-
+acc_timeseries_svg.append("clipPath")
+  .attr("id","clip-acc")
+  .append('rect')
+    .attr({
+      'width':width,
+      'height':height+margin.bottom,
+    })
 
 // Elements of the map focus group
 var mapFocus;
@@ -223,7 +243,8 @@ d3.json("Outbound/Location_20140808_inicio_0647.txt", function(data) {
   gps_speed_timeseries_svg.append('path')
     .datum(data.filter(function(d){return d['sensor'] == 'gps'}))
     .attr('class', 'line')
-    .attr('d', line);
+    .attr('d', line)
+    .attr("clip-path", "url(#clip-gps)");
 
   // draw dots
   gps_speed_timeseries_svg.append('g').attr("class","g-circles").selectAll(".dot")
@@ -233,7 +254,9 @@ d3.json("Outbound/Location_20140808_inicio_0647.txt", function(data) {
       .attr("r", 3.5)
       .attr("cx", xMap)
       .attr("cy", yMap)
-      .style("fill", 'steelblue')
+      .attr("clip-path", "url(#clip-gps)")
+      .style("fill", 'steelblue');
+
 
   network_speed_timeseries_svg.append('g').attr("class","g-circles").selectAll(".dot")
       .data(data.filter(function(d){return d['sensor'] == 'network'}))
@@ -242,7 +265,8 @@ d3.json("Outbound/Location_20140808_inicio_0647.txt", function(data) {
       .attr("r", 2.5)
       .attr("cx", xMap)
       .attr("cy", smallHeight/4)
-      .style("fill", 'coral')
+      .attr("clip-path", "url(#clip-network)")
+      .style("fill", 'coral');
 
   // Adding the focus tracking to speed and network measurements
   // focus tracking
@@ -392,7 +416,7 @@ network_speed_timeseries_svg.append('rect')
     // x-axis
     acc_timeseries_svg.append("g")
         .attr("class", "x axis")
-        .attr("transform", "translate(0," + height/2 + ")")
+        .attr("transform", "translate(0," + height + ")")
         .call(xAxis)
       .append("text")
         .attr("class", "label")
@@ -452,6 +476,7 @@ network_speed_timeseries_svg.append('rect')
       .datum(data)
       .attr('class', 'line')
       .attr('d', abs_accline)
+      .attr("clip-path", "url(#clip-acc)")
       .style({
         'fill': 'none',
         'stroke': 'lightgreen',
