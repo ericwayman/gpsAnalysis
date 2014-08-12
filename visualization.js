@@ -1,4 +1,6 @@
-var mData;
+var locationData;
+var sensorData;
+
 // Create the Google Map…
 var map = new google.maps.Map(d3.select("#map").node(), {
   zoom: 10,
@@ -15,10 +17,11 @@ var tooltip = d3.select("body")
   .style("visibility", "hidden");
 
 // SCATTERPLOT ELEMENTS
-var margin = {top: 20, right: 20, bottom: 30, left: 40},
+var margin = {top: 15, right: 20, bottom: 30, left: 40},
     padding = 10,
     width = 900 - margin.left - margin.right,
-    height = 300 - margin.top - margin.bottom;
+    height = 150 - margin.top - margin.bottom;
+    smallHeight = 60 - margin.top - margin.bottom;
 
 /* 
  * value accessor - returns the value to encode for a given data object.
@@ -39,26 +42,65 @@ var yValue = function(d) { return d['speed'];}, // data -> value
     yMap = function(d) { return yScale(yValue(d));}, // data -> display
     yAxis = d3.svg.axis().scale(yScale).orient("left");
 
+// setup accelerometer readings
+var accScale = d3.scale.linear().range([height,0]).domain([-0.5,0.5]);
+    accAxis = d3.svg.axis().scale(accScale).orient("left")
+
 // setup the gps line
 var line = d3.svg.line()
           .x(function(d) { return xMap(d); })
           .y(function(d) { return yMap(d); });
+var abs_accline;
 
-// add the graph canvas to the body of the webpage
-var svg = d3.select("body").append("svg")
+// add the speed timeseries graph canvas to the body of the webpage
+var gps_speed_timeseries_svg = d3.select("body").append("svg")
     .attr("width", width + margin.left + margin.right)
     .attr("height", height + margin.top + margin.bottom)
     .style('cursor','pointer')
   .append("g")
     .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
 
+// add the network/wifi measurements
+var network_speed_timeseries_svg = d3.select("body").append("svg")
+    .attr("width", width + margin.left + margin.right)
+    .attr("height", smallHeight + margin.top + margin.bottom)
+    .style('cursor','pointer')
+  .append("g")
+    .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
+
+// add the acc sensor timeseries graph canvas to the body
+var acc_timeseries_svg = d3.select("body").append("svg")
+    .attr("width", width + margin.left + margin.right)
+    .attr("height", height + margin.top + margin.bottom)
+  .append("g")
+    .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
+
+
 // Elements of the map focus group
 var mapFocus;
 var projection;
 
-// Load the station data. When the data comes back, create an overlay.
-d3.json("Inbound/Location_20140808_inicio_0817.txt", function(data) {
-  mData = data;
+// Zoom behavior
+// create the zoom listener
+// Zoom function
+function draw() {
+  gps_speed_timeseries_svg.select("g.x.axis").call(xAxis);
+  gps_speed_timeseries_svg.select("g.y.axis").call(yAxis);
+  gps_speed_timeseries_svg.select(".line").attr("d", line);
+  gps_speed_timeseries_svg.selectAll(".dot").attr("cx",xMap);
+  network_speed_timeseries_svg.select("g.x.axis").call(xAxis);
+  network_speed_timeseries_svg.selectAll(".dot").attr("cx",xMap);
+  acc_timeseries_svg.select("g.x.axis").call(xAxis);
+  acc_timeseries_svg.select(".line").attr("d", abs_accline);
+}
+
+var zoom = d3.behavior.zoom()
+  .on("zoom", draw);
+
+// Load the location data.
+d3.json("Outbound/Location_20140808_inicio_0647.txt", function(data) {
+// d3.json("Inbound/Location_20140808_inicio_0817.txt", function(data) {
+  locationData = data;
   var overlay = new google.maps.OverlayView();
 
   // Add the container when the overlay is added to the map.
@@ -139,10 +181,11 @@ d3.json("Inbound/Location_20140808_inicio_0817.txt", function(data) {
   // Scatterplot drawing (speed timeseries)
   // don't want dots overlapping axis, so add in buffer to data domain
   xScale.domain(d3.extent(data,xValue));
+  zoom.x(xScale)
   yScale.domain(d3.extent(data,yValue));
 
   // x-axis
-  svg.append("g")
+  gps_speed_timeseries_svg.append("g")
       .attr("class", "x axis")
       .attr("transform", "translate(0," + height + ")")
       .call(xAxis)
@@ -153,8 +196,19 @@ d3.json("Inbound/Location_20140808_inicio_0817.txt", function(data) {
       .style("text-anchor", "end")
       .text("Time");
 
+  network_speed_timeseries_svg.append("g")
+      .attr("class", "x axis")
+      .attr("transform", "translate(0," + smallHeight/4 + ")")
+      .call(xAxis)
+    .append("text")
+      .attr("class", "label")
+      .attr("x", width)
+      .attr("y", -6)
+      .style("text-anchor", "end")
+      .text("Time");
+
   // y-axis
-  svg.append("g")
+  gps_speed_timeseries_svg.append("g")
       .attr("class", "y axis")
       .call(yAxis)
     .append("text")
@@ -163,76 +217,95 @@ d3.json("Inbound/Location_20140808_inicio_0817.txt", function(data) {
       .attr("y", 6)
       .attr("dy", ".71em")
       .style("text-anchor", "end")
-      .text("Speed");
+      .text("Speed (m/s)");
 
   // draw line connecting gps points
-  svg.append('path')
-    .attr({'class':'gps-path'})
+  gps_speed_timeseries_svg.append('path')
     .datum(data.filter(function(d){return d['sensor'] == 'gps'}))
     .attr('class', 'line')
     .attr('d', line);
 
   // draw dots
-  svg.append('g').attr("class","g-circles").selectAll(".dot")
-      .data(data)
+  gps_speed_timeseries_svg.append('g').attr("class","g-circles").selectAll(".dot")
+      .data(data.filter(function(d){return d['sensor'] == 'gps'}))
     .enter().append("circle")
       .attr("class", "dot")
       .attr("r", 3.5)
       .attr("cx", xMap)
       .attr("cy", yMap)
-      .style("fill", color_fill2)
+      .style("fill", 'steelblue')
 
-  // Adding the focus tracking
+  network_speed_timeseries_svg.append('g').attr("class","g-circles").selectAll(".dot")
+      .data(data.filter(function(d){return d['sensor'] == 'network'}))
+    .enter().append("circle")
+      .attr("class", "dot")
+      .attr("r", 2.5)
+      .attr("cx", xMap)
+      .attr("cy", smallHeight/4)
+      .style("fill", 'coral')
+
+  // Adding the focus tracking to speed and network measurements
   // focus tracking
-  var focus = svg.append('g').style('display', 'none');
+  var gps_focus = gps_speed_timeseries_svg.append('g').style('display', 'none');
+  var network_focus = network_speed_timeseries_svg.append('g').style('display', 'none');
       
-  focus.append('line')
+  gps_focus.append('line')
       .attr('id', 'focusLineX')
       .attr('class', 'focusLine');
-  focus.append('line')
+  gps_focus.append('line')
       .attr('id', 'focusLineY')
       .attr('class', 'focusLine');
-  focus.append('circle')
+  gps_focus.append('circle')
       .attr('id', 'focusCircle')
-      .attr('r', 7)
+      .attr('r', 5)
       .attr('class', 'circle focusCircle');
 
+  network_focus.append('circle')
+      .attr('id', 'focusCircle')
+      .attr('r', 5)
+      .attr('class', 'circle focusCircle');
 
   var bisectDate = d3.bisector(xValue).left; 
 
-  svg.append('rect')
+  gps_speed_timeseries_svg.append('rect')
       .attr('class', 'overlay')
       .attr('width', width)
       .attr('height', height)
       .on('mouseover', function() { 
-        focus.style('display', null);
+        gps_focus.style('display', null);
         d3.select('.mapFocus-g').style('display', null); 
         d3.select('.mapFocus').moveToFront();
       })
       .on('mouseout', function() { 
-        focus.style('display', 'none');
+        gps_focus.style('display', 'none');
         d3.select('.mapFocus-g').style('display', 'none');  
       })
       .on('mousemove', function() { 
           var mouse = d3.mouse(this);
           var mouseDate = xScale.invert(mouse[0]);
-          var i = bisectDate(data, mouseDate); // returns the index to the current data item
+          var i = bisectDate(data.filter(function(d){return d['sensor'] == 'gps'}), mouseDate); // returns the index to the current data item
 
-          var d0 = data[i - 1]
-          var d1 = data[i];
+          var d0 = data.filter(function(d){return d['sensor'] == 'gps'})[i - 1]
+          var d1 = data.filter(function(d){return d['sensor'] == 'gps'})[i];
           // work out which date value is closest to the mouse
-          var d = mouseDate - d0['time'] > d1['time'] - mouseDate ? d1 : d0;
+          if (d0 == undefined) {
+            var d = d1;
+          } else if (d1 == undefined){
+            var d = d0;
+          } else {
+            var d = mouseDate - d0['time'] > d1['time'] - mouseDate ? d1 : d0;
+          }
 
           var x = xScale(xValue(d));
           var y = yScale(yValue(d));
 
-          focus.select('#focusCircle')
+          gps_focus.select('#focusCircle')
               .attr('cx', x)
               .attr('cy', y);
-          focus.select('#focusLineX')
+          gps_focus.select('#focusLineX')
               .attr('x1', x).attr('y1', 0)
               .attr('x2', x).attr('y2', height);
-          focus.select('#focusLineY')
+          gps_focus.select('#focusLineY')
               .attr('x1', 0).attr('y1', y)
               .attr('x2', width).attr('y2', y);
       
@@ -242,6 +315,147 @@ d3.json("Inbound/Location_20140808_inicio_0817.txt", function(data) {
           d3.select('.mapFocus')
               .style("left", (proj.x - padding) + "px")
               .style("top", (proj.y - padding) + "px");
-      });
+      })
+      .call(zoom);
+  
+network_speed_timeseries_svg.append('rect')
+    .attr('class', 'overlay')
+    .attr('width', width)
+    .attr('height', smallHeight)
+    .on('mouseover', function() { 
+      network_focus.style('display', null);
+      d3.select('.mapFocus-g').style('display', null); 
+      d3.select('.mapFocus').moveToFront();
+    })
+    .on('mouseout', function() { 
+      network_focus.style('display', 'none');
+      d3.select('.mapFocus-g').style('display', 'none');  
+    })
+    .on('mousemove', function() { 
+        var mouse = d3.mouse(this);
+        var mouseDate = xScale.invert(mouse[0]);
+        var i = bisectDate(data.filter(function(d){return d['sensor'] == 'network'}), mouseDate); // returns the index to the current data item
 
+        var d0 = data.filter(function(d){return d['sensor'] == 'network'})[i - 1]
+        var d1 = data.filter(function(d){return d['sensor'] == 'network'})[i];
+        // work out which date value is closest to the mouse
+        if (d0 == undefined) {
+          var d = d1;
+        } else if (d1 == undefined){
+          var d = d0;
+        } else {
+          var d = mouseDate - d0['time'] > d1['time'] - mouseDate ? d1 : d0;
+        }
+
+        var x = xScale(xValue(d));
+        var y = smallHeight/4;
+
+        network_focus.select('#focusCircle')
+            .attr('cx', x)
+            .attr('cy', y);
+    
+        // Change the location of the map focus
+        gmapLL = new google.maps.LatLng(d['lat'],d['lon']);
+        proj = projection.fromLatLngToDivPixel(gmapLL);
+        d3.select('.mapFocus')
+            .style("left", (proj.x - padding) + "px")
+            .style("top", (proj.y - padding) + "px");
+    });
+
+  // Load the accelerometer data and plot it.
+  d3.json("Outbound/Sensors_20140808_inicio_0647.txt", function(data) {
+  // d3.json("Inbound/Sensors_20140808_inicio_0817.txt", function(data) {
+    sensorData = data;
+
+    // setup the gps line
+    var acc1line = d3.svg.line()
+              .x(function(d) { return xMap(d); })
+              .y(function(d) { return accScale(d['Acc1']); });
+
+    var acc2line = d3.svg.line()
+              .x(function(d) { return xMap(d); })
+              .y(function(d) { return accScale(d['Acc2']); });
+
+    var acc3line = d3.svg.line()
+              .x(function(d) { return xMap(d); })
+              .y(function(d) { return accScale(d['Acc3']); });
+
+    abs_accline = d3.svg.line()
+              .x(function(d) { return xMap(d); })
+              .y(function(d) { 
+                return accScale(Math.sqrt(d['Acc1']*d['Acc1']
+                  +d['Acc2']*d['Acc2']
+                  +d['Acc3']*d['Acc3'])
+                  -9.81); 
+              });
+
+    // x-axis
+    acc_timeseries_svg.append("g")
+        .attr("class", "x axis")
+        .attr("transform", "translate(0," + height/2 + ")")
+        .call(xAxis)
+      .append("text")
+        .attr("class", "label")
+        .attr("x", width)
+        .attr("y", -6)
+        .style("text-anchor", "end")
+        .text("Time");
+
+    // y-axis
+    acc_timeseries_svg.append("g")
+        .attr("class", "y axis")
+        .call(accAxis)
+      .append("text")
+        .attr("class", "label")
+        .attr("transform", "rotate(-90)")
+        .attr("y", 6)
+        .attr("dy", ".71em")
+        .style("text-anchor", "end")
+        .text("Acc.");
+
+    // Draw the three accelerometer paths
+    // draw line connecting gps points
+    // acc_timeseries_svg.append('path')
+    //   .attr({'class':'gps-path'})
+    //   .datum(data)
+    //   .attr('class', 'line')
+    //   .attr('d', acc1line)
+    //   .style({
+    //     'fill': 'none',
+    //     'stroke': 'steelblue',
+    //     'stroke-width': '2px',
+    //   })
+
+    // acc_timeseries_svg.append('path')
+    //   .attr({'class':'gps-path'})
+    //   .datum(data)
+    //   .attr('class', 'line')
+    //   .attr('d', acc2line)
+    //   .style({
+    //     'fill': 'none',
+    //     'stroke': 'coral',
+    //     'stroke-width': '2px',
+    //   })
+
+    // acc_timeseries_svg.append('path')
+    //   .attr({'class':'gps-path'})
+    //   .datum(data)
+    //   .attr('class', 'line')
+    //   .attr('d', acc3line)
+    //   .style({
+    //     'fill': 'none',
+    //     'stroke': 'gray',
+    //     'stroke-width': '2px',
+    //   })
+
+    acc_timeseries_svg.append('path')
+      .datum(data)
+      .attr('class', 'line')
+      .attr('d', abs_accline)
+      .style({
+        'fill': 'none',
+        'stroke': 'lightgreen',
+        'stroke-width': '2px',
+      })
+  });
 });

@@ -15,13 +15,3 @@ function color_fill(d){
     return "steelblue";
   }
 }
-
-function color_fill2(d){
-  if (d['sensor'] == 'network'){
-    return "coral";
-  } else if (d['sensor'] == 'network') {
-    return "green";
-  } else {
-    return "steelblue";
-  }
-}
