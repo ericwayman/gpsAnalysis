@@ -1,4 +1,3 @@
 TODO:
 
 - Activate tooltip and focus position on the map based on the focus for the scatterplot.
-- Fix the time parsing/display
