@@ -42,6 +42,8 @@ var yValue = function(d) { return d['speed'];}, // data -> value
     yMap = function(d) { return yScale(yValue(d));}, // data -> display
     yAxis = d3.svg.axis().scale(yScale).orient("left");
 
+var colorScale = d3.scale.linear().range(['red','green']).domain([1000,0])
+
 // setup accelerometer readings
 var accScale = d3.scale.linear().range([height,0]).domain([-0.5,0.5]);
     accAxis = d3.svg.axis().scale(accScale).orient("left")
@@ -266,7 +268,7 @@ d3.json("Outbound/Location_20140808_inicio_0647.txt", function(data) {
       .attr("cx", xMap)
       .attr("cy", smallHeight/4)
       .attr("clip-path", "url(#clip-network)")
-      .style("fill", 'coral');
+      .style("fill", function(d){return colorScale(d['accuracy'])});
 
   // Adding the focus tracking to speed and network measurements
   // focus tracking
