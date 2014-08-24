@@ -20,8 +20,8 @@ var tooltip = d3.select("body")
 var margin = {top: 15, right: 20, bottom: 30, left: 40},
     padding = 10,
     width = 900 - margin.left - margin.right,
-    height = 150 - margin.top - margin.bottom;
-    smallHeight = 60 - margin.top - margin.bottom;
+    height = 130 - margin.top - margin.bottom;
+    smallHeight = 57 - margin.top - margin.bottom;
 
 /* 
  * value accessor - returns the value to encode for a given data object.
